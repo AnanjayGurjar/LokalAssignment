@@ -1,6 +1,6 @@
 package com.ananjay.lokalassignment.di
 
-import com.ananjay.lokalassignment.models.Product
+import com.ananjay.lokalassignment.api.ProductAPI
 import com.ananjay.lokalassignment.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -25,7 +25,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun getProductAPIInstance(retrofit: Retrofit): Product{
-        return retrofit.create(Product::class.java)
+    fun getProductAPIInstance(retrofit: Retrofit): ProductAPI{
+        return retrofit.create(ProductAPI::class.java)
     }
 }

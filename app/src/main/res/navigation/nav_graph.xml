@@ -7,16 +7,14 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.ananjay.lokalassignment.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:name="com.ananjay.lokalassignment.fragments.MainFragment"
+        android:label="fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.ananjay.lokalassignment.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        android:name="com.ananjay.lokalassignment.fragments.DetailsFragment"
+        android:label="fragment_details" />
 </navigation>
