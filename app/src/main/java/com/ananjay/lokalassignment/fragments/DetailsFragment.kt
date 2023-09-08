@@ -28,17 +28,19 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val jsonProduct = arguments?.getString("note")
+        val jsonProduct = arguments?.getString("product")
         if(jsonProduct != null){
             val product = Gson().fromJson<Product>(jsonProduct, Product::class.java)
             Glide.with(view).load(product.thumbnail).into(binding.ivProduct)
             binding.tvBrand.text = product.brand
             binding.tvTitle.text = product.title
             binding.tvDescription.text = product.description
-            binding.tvPrice.text = "$${product.price}"
-            binding.tvDiscount.text = "${product.discountPercentage}% off"
-            binding.tvStock.text = "Hurry only ${product.stock} left"
+            binding.tvPrice.text = getString(R.string.price, product.price)
+            binding.tvDiscount.text = getString(R.string.discount, product.discountPercentage)
+            binding.tvStock.text = getString(R.string.stock, product.stock)
         }else{
+            //should not happen
+
             binding.tvTitle.text = ""
             binding.tvDescription.text = ""
             binding.tvPrice.text = ""

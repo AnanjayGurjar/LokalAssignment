@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/iv_product"
         android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:text="Brand"/>
+        android:text="@string/brand"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_brand"
         android:layout_marginStart="10dp"
         android:textSize="18sp"
-        android:text="Sample Title of the product"/>
+        android:text="@string/title"/>
 
 
     <LinearLayout
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="28sp"
-            android:text="$300"/>
+            android:text="@string/price"/>
 
         <TextView
             android:id="@+id/tv_discount"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
-            android:text="(10% off)"/>
+            android:text="@string/discount"/>
 
     </LinearLayout>
 
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         android:layout_margin="10dp"
         android:textSize="14sp"
-        android:text="This is a sample description denoting description of the product"/>
+        android:text="@string/description"/>
 
     <TextView
         android:id="@+id/tv_stock"
@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="10dp"
         android:textSize="22sp"
-        android:text="Hurry only 10 left"/>
+        android:text="@string/stock"/>
 
 
 

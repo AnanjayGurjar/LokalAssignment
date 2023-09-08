@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ananjay.lokalassignment.api.ProductAPI
 import com.ananjay.lokalassignment.models.Products
 import com.ananjay.lokalassignment.utils.NetworkResult
+import org.json.JSONObject
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor(private val productAPI: ProductAPI){
@@ -18,14 +19,10 @@ class ProductRepository @Inject constructor(private val productAPI: ProductAPI){
         val response = productAPI.getProducts()
         if(response.isSuccessful && response.body() != null){
             _productsLiveData.postValue(NetworkResult.Success(response.body()!!))
+        }else if(response.errorBody() != null){
+            _productsLiveData.postValue(NetworkResult.Error(response.errorBody().toString()))
         }else{
-            if(response.errorBody() != null){
-                _productsLiveData.postValue(NetworkResult.Error(response.errorBody().toString()));
-            }else{
-                _productsLiveData.postValue(NetworkResult.Error("Something went wrong"));
-
-            }
-
+            _productsLiveData.postValue(NetworkResult.Error("Something went wrong"))
         }
     }
 
