@@ -10,6 +10,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url  "https://oss.sonatype.org/content/repositories/snapshots"
+            content {
+                includeModule("com.google.dagger", "hilt-android-gradle-plugin")
+            }
+        }
     }
 }
 rootProject.name = "Lokal Assignment"

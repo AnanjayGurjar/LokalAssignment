@@ -1,8 +1,5 @@
 package com.ananjay.lokalassignment.fragments
 
-
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,8 +40,6 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        Log.d("MainFragment", "on create view")
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
@@ -54,12 +49,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(InternetAvailibility.isOnline(requireContext())){
-            Log.d("MainFragment", "no internet")
-            fetchAndObserveProducts()
+            fetchProducts()
+            observeProducts()
         }else{
             showSnackBar()
         }
-        Log.d("MainFragment", "onViewCreated: ")
     }
 
     private fun showSnackBar(){
@@ -77,15 +71,19 @@ class MainFragment : Fragment() {
         )
         snackbar.setAction("Try again") {
             if (InternetAvailibility.isOnline(context)) {
-                fetchAndObserveProducts()
+                fetchProducts()
+                observeProducts()
             } else {
                 showSnackBar()
             }
         }.show()
     }
 
-    private fun fetchAndObserveProducts(){
+    private fun fetchProducts(){
         productViewModel.getProducts()
+    }
+
+    private fun observeProducts(){
         productViewModel.porductsLiveData.observe(viewLifecycleOwner, Observer {
             binding.progressBar.isVisible = true
             when(it){
@@ -114,7 +112,6 @@ class MainFragment : Fragment() {
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         val adapter = ProductAdapter(products,::onNoteItemClicked)
         binding.rvProducts.adapter = adapter
-
     }
 
     private fun onNoteItemClicked(product: Product){

@@ -15,4 +15,8 @@ class ProductViewModel @Inject constructor(private val productRepository: Produc
             productRepository.getProducts()
         }
     }
+    fun getOfflineProducts(){
+        productRepository.getOfflineData()
+    }
+
 }

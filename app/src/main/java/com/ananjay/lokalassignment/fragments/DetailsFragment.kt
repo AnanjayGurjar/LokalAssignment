@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ananjay.lokalassignment.R
@@ -29,9 +30,11 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val jsonProduct = arguments?.getString("product")
+
         if(jsonProduct != null){
             val product = Gson().fromJson<Product>(jsonProduct, Product::class.java)
             Glide.with(view).load(product.thumbnail).into(binding.ivProduct)
+
             binding.tvBrand.text = product.brand
             binding.tvTitle.text = product.title
             binding.tvDescription.text = product.description
